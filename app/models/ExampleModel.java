@@ -6,7 +6,7 @@ import play.data.validation.ValidationError;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PlayerConnect {
+public class ExampleModel {
     public static final int MAX_ID = 9999;
 
     public Integer playerId;
