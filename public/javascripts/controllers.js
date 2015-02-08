@@ -6,6 +6,7 @@ youtubeSearch.controller('YouTubeSearchCtrl', function ($scope) {
     $scope.searchError = null
 
     $scope.onSearch = function () {
+    	$scope.searchError = "Search result ..."
         var searchRoute = jsRoutes.controllers.Application.search($scope.searchQuery)
 
         searchRoute.ajax( ).done(function(res) {
