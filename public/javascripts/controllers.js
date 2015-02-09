@@ -1,12 +1,39 @@
-var youtubeSearch = angular.module('youtubeSearch', []);
+var genericSearch = angular.module('genericSearch', []);
 
-youtubeSearch.controller('YouTubeSearchCtrl', function ($scope) {
+genericSearch.controller('GenericSearchCtrl', function ($scope) {
 
-    $scope.searchQuery = ""
+	$scope.searchQuery = ""
     $scope.searchError = null
 
     $scope.onSearch = function () {
-    	$scope.searchResults = "Message from angularjs ..."
+    	// alert('running onSearch');
+    	$scope.searchResults = "- search results from angularjs ..."
+    		
+		// Experimental model
+		$scope.student = {records:[{
+				firstName: "John",
+				lastName: "Smith",
+				fees:500,
+				subjects:[
+					{name:'Physics',marks:70},
+					{name:'Chemistry',marks:80},
+					{name:'Math',marks:65},
+					{name:'English',marks:75},
+				]
+			},
+			{
+				firstName: "Kate",
+				lastName: "Jones",
+				fees:500,
+				subjects:[
+					{name:'Physics',marks:80},
+					{name:'Chemistry',marks:60},
+					{name:'Math',marks:75},
+					{name:'English',marks:55},
+					{name:'Hindi',marks:67}
+				]
+			}]};   		
+    		
         var searchRoute = jsRoutes.controllers.Application.search($scope.searchQuery)
 
         searchRoute.ajax( ).done(function(res) {

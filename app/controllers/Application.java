@@ -2,19 +2,15 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import models.ExampleModel;
-import models.PlayerInfo;
 import play.*;
 import play.data.Form;
 import play.libs.F;
 import play.libs.Json;
 import play.mvc.*;
-
 import scala.util.parsing.json.JSONObject;
 import views.html.*;
-import views.html.index;
-
-
 import play.libs.WS;
 import play.mvc.Result;
 
@@ -33,12 +29,14 @@ public class Application extends Controller {
     public static Result javascriptRoutes() {
         response().setContentType("text/javascript");
         return ok(
-            Routes.javascriptRouter("jsRoutes")
+            Routes.javascriptRouter("jsRoutes",
+                controllers.routes.javascript.Application.search()
+            )
         );
     }
 
     public static Promise<Result> search(String query) {
-        Promise<WS.Response> responsePromise = WS.url("https://www.googleapis.com/youtube/v3/search")
+        Promise<WS.Response> responsePromise = WS.url("https://yourdomain.com/search")
                 .setQueryParameter("part", "snippet")
                 .setQueryParameter("q", query)
                 .setQueryParameter("key", "AIzaSyDg-_FDKc2FDD2kAzZSE3Idtjf4O2Ynm58")

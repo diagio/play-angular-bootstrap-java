@@ -5,10 +5,10 @@
 # Home page
 GET         /                        controllers.Application.index()
 GET         /javascriptRoutes        controllers.Application.javascriptRoutes()
+GET         /search                  controllers.Application.search(query:String)
 
 #GET         /player                  controllers.Application.player()
 #GET         /remote                  controllers.Application.remote()
-#GET         /search                  controllers.Application.search(query:String)
 #GET         /play                    controllers.Application.playVideo(playerId:Int, videoId:String, thumbnailUrl:String)
 #GET         /playerWS                controllers.Application.playerWebSocket(playerId:Int)
 
