@@ -11,8 +11,9 @@ import play.libs.Json;
 import play.mvc.*;
 import scala.util.parsing.json.JSONObject;
 import views.html.*;
-import play.libs.WS;
+import play.libs.ws.*;
 import play.mvc.Result;
+import java.net.URL;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -36,14 +37,15 @@ public class Application extends Controller {
     }
 
     public static Promise<Result> search(String query) {
-        Promise<WS.Response> responsePromise = WS.url("https://yourdomain.com/search")
+        
+        Promise<WSResponse> responsePromise = WS.url("https://yourdomain.com/search")
                 .setQueryParameter("part", "snippet")
                 .setQueryParameter("q", query)
                 .setQueryParameter("key", "AIzaSyDg-_FDKc2FDD2kAzZSE3Idtjf4O2Ynm58")
                 .get();
-        Promise<Result> resultPromise = responsePromise.map(new Function<WS.Response, Result>() {
+        Promise<Result> resultPromise = responsePromise.map(new Function<WSResponse, Result>() {
             @Override
-            public Result apply(WS.Response response) throws Throwable {
+            public Result apply(WSResponse response) throws Throwable {
                 if (response.getStatus() != OK)
                     return status(response.getStatus(), response.getBody());
 
