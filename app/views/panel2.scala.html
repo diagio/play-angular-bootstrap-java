@@ -1,0 +1,45 @@
+@()
+<div class="panel panel-default">
+    <div class="panel-heading">panel 2 {{searchResults}}</div>
+                
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#sectionA">Section A</a></li>
+        <li><a data-toggle="tab" href="#sectionB">Section B</a></li>
+        <li><a data-toggle="tab" href="#sectionC">Section C</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="sectionA" class="tab-pane fade in active">
+                  <table class="table table-striped">
+		        <thead>
+		            <tr>
+		                <th>First Name</th>
+		                <th>Last Name</th>
+		                <th>Grades</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		        	<tr ng-repeat="row in student.records">
+		        		<td>{{row.firstName}}</td>
+		        		<td>{{row.lastName}}</td>
+		        		<td>
+		        			<table class="table table-striped">
+							<tr ng-repeat="subject in row.subjects">
+				                <td>{{subject.name}}</td>
+				                <td>{{subject.marks}}</td>
+							</tr>
+							</table>
+						</td>
+		        	</tr>
+				</tbody>
+		    </table>		                    
+        </div>
+        <div id="sectionB" class="tab-pane fade">
+            <h3>Section B</h3>
+            <p>Section B content</p>
+        </div>
+        <div id="sectionC" class="tab-pane fade">
+            <h3>Section C</h3>
+            <p>Section C content</p>
+        </div>
+    </div>
+</div>
