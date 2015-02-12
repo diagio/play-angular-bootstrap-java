@@ -29,8 +29,6 @@ genericSearch.controller('GenericSearchCtrl', function ($scope) {
 					{name:'Physics',marks:80},
 					{name:'Chemistry',marks:60},
 					{name:'Math',marks:75},
-					{name:'English',marks:55},
-					{name:'Hindi',marks:67}
 				]
 			}]};   		
     		
@@ -44,6 +42,11 @@ genericSearch.controller('GenericSearchCtrl', function ($scope) {
             $scope.searchError = res.responseText
             $scope.$apply()
         });
+    }
+
+    $scope.onClear = function () {
+    	$scope.searchResults = null;
+		$scope.student = null;
     }
 
     $scope.playError = false
