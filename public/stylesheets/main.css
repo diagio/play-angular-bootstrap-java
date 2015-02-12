@@ -1,5 +1,5 @@
 body {
-    padding-top: 100px;
+    padding-top: 0px;
 }
 
 .panel-heading .accordion-toggle-right:after {
@@ -25,4 +25,9 @@ body {
 .panel-heading .accordion-toggle-left.collapsed:after {
     /* symbol for "collapsed" panels */
     content: "\e131";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.container-full {
+  margin: 10px;
+  width: 95%;
 }

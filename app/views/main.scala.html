@@ -1,4 +1,4 @@
-@(title: String)(headContent:Html)(content: Html)
+@(title: String)(headContent:Html)(header: Html)(content: Html)
 
 <!DOCTYPE html>
 
@@ -15,15 +15,10 @@
 
     </head>
     <body ng-controller="GenericSearchCtrl">
-        <div class="container">
-            <div class="navbar navbar-inverse navbar-fixed-top">
-                <h1 class="fill">
-                    <a href="@routes.Application.index()">
-                        <span class="glyphicon glyphicon-home"></span>&nbsp;@title
-                    </a>
-                </h1>
+    
+    	@header
 
-            </div>
+        <div class="container-full">
 
             @content
 
