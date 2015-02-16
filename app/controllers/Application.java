@@ -38,7 +38,7 @@ public class Application extends Controller {
 
     public static Promise<Result> search(String query) {
         
-        Promise<WSResponse> responsePromise = WS.url("https://yourdomain.com/search")
+        Promise<WSResponse> responsePromise = WS.url("https://x.com/search")
                 .setQueryParameter("part", "snippet")
                 .setQueryParameter("q", query)
                 .setQueryParameter("key", "AIzaSyDg-_FDKc2FDD2kAzZSE3Idtjf4O2Ynm58")
