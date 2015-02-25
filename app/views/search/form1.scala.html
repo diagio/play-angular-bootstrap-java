@@ -1,13 +1,24 @@
 @()
-   	<form class="form-horizontal">
-   	
-	    <div class="panel-group" id="accordion1">
-	        <div class="panel panel-default">
-		        <p class="pull-right">
+  <accordion close-others="oneAtATime">
+    <accordion-group is-open="form1status.isFirstOpen">
+        <accordion-heading>
+            Search ID<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': form1status.isFirstOpen, 'glyphicon-chevron-right': !form1status.isFirstOpen}"></i>
+        </accordion-heading>
+  
+		<div ng-controller="formController">
+		  <form novalidate>
+		  
+		  
+				  <div class="col-lg-8 col-md-8 col-sm-8">
+				  	<input id="textinput" name="textinput" placeholder="placeholder" class="form-control input-md" type="text">
+				  </div>
+				  <div class="col-lg-4 col-md-4 col-sm-4">
 				    <button type="submit" class="btn btn-primary btn-sm" ng-click="onSearch()">Go</button>
 				    <button type="submit" class="btn btn-primary btn-sm" ng-click="onClear()">Clear</button>
-				</p>
-			</div>
+				  </div>
+		  
+		  
+		  </form>
 		</div>
 
-    </form>		                    
+  </accordion>

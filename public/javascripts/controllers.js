@@ -1,68 +1,93 @@
-var genericSearch = angular.module('genericSearch', []);
+// create our angular app and inject ui.bootstrap
+var application = angular.module('app', ['ui.bootstrap']);
 
-genericSearch.controller('GenericSearchCtrl', function ($scope) {
+application.controller('formController', function($scope, $http) {
+	
+	$scope.formData = {};
+	
+	  $scope.items = [
+	           	    {
+	           	    index: 0,
+	           	      add: true,
+	           	      buttonFace: '+',
+	           	      content: 'Item1'
+	           	    }
+	           	  ];
 
-	$scope.searchQuery = ""
-    $scope.searchError = null
+	  $scope.addItem = function() {
+		  // alert('add');
+		    var newItemNo = $scope.items.length + 1;
+		    var newItem = {index: newItemNo - 1, add:false, buttonFace:'-', content:'Item' + newItemNo};
+		    $scope.items.push(newItem);
+		  };
 
-    $scope.onSearch = function () {
-    	// alert('running onSearch');
-    	$scope.searchResults = "- search results from angularjs ..."
-    		
-		// Experimental model
-		$scope.student = {records:[{
-				firstName: "John",
-				lastName: "Smith",
-				fees:500,
-				subjects:[
-					{name:'Physics',marks:70},
-					{name:'Chemistry',marks:80},
-					{name:'Math',marks:65},
-					{name:'English',marks:75},
-				]
-			},
-			{
-				firstName: "Kate",
-				lastName: "Jones",
-				fees:500,
-				subjects:[
-					{name:'Physics',marks:80},
-					{name:'Chemistry',marks:60},
-					{name:'Math',marks:75},
-				]
-			}]};   		
-    		
-        var searchRoute = jsRoutes.controllers.Application.search($scope.searchQuery)
+	  $scope.removeItem = function(selectedItem) {
+		  // alert(selectedItem.content);
+		  $scope.items.removeValue('index', selectedItem.index);
+		  };
 
-        searchRoute.ajax( ).done(function(res) {
-            $scope.searchError = null
-            $scope.searchResults = res
-            $scope.$apply()
-        } ).fail(function(res) {
-            $scope.searchError = res.responseText
-            $scope.$apply()
-        });
-    }
-
-    $scope.onClear = function () {
-    	$scope.searchResults = null;
-		$scope.student = null;
-    }
-
-    $scope.playError = false
-    $scope.playStatus = null
-
-    $scope.onPlay = function (playerId, videoId, thumbnailUrl) {
-        var playRoute = jsRoutes.controllers.Application.playVideo(playerId, videoId, thumbnailUrl)
-
-        playRoute.ajax().done (function(res) {
-            $scope.playError = res.error
-            $scope.playStatus = res.status
-            $scope.$apply()
-        }).fail(function(res) {
-            $scope.playError = res.responseText
-            $scope.playStatus = null
-            $scope.$apply()
-        })
-    }
 });
+
+
+application.controller('mainController', function($scope) {
+  
+  // BUTTONS ======================
+  
+  // define some random object and button values
+  $scope.bigData = {};
+  
+  $scope.bigData.breakfast = false;
+  $scope.bigData.lunch = false;
+  $scope.bigData.dinner = false;
+  
+  // COLLAPSE =====================
+  $scope.isCollapsed = false;
+  
+
+  
+  
+  
+	  $scope.oneAtATime = false;
+
+	  $scope.groups = [
+	    {
+	      title: 'Dynamic Group Header - 1',
+	      content: 'Dynamic Group Body - 1'
+	    },
+	    {
+	      title: 'Dynamic Group Header - 2',
+	      content: 'Dynamic Group Body - 2'
+	    }
+	  ];
+
+	  $scope.section1status = {
+			    isFirstOpen: true,
+			    isFirstDisabled: false
+			  };
+			  
+	  $scope.section2status = {
+			    isFirstOpen: true,
+			    isFirstDisabled: false
+			  };
+			  
+	  $scope.section3status = {
+			    isFirstOpen: true,
+			    isFirstDisabled: false
+			  };
+			  
+	  $scope.section4status = {
+			    isFirstOpen: true,
+			    isFirstDisabled: false
+			  };
+			  
+	  $scope.form1status = {
+			    isFirstOpen: true,
+			    isFirstDisabled: false
+			  };
+			  
+	  $scope.form2status = {
+			    isFirstOpen: true,
+			    isFirstDisabled: false
+			  };
+			  
+	});

@@ -1,82 +1,121 @@
 @()
-   	<form class="form-horizontal">
-	    <div class="panel-group">
-	        <div class="panel panel-default">
-		        <p class="pull-right">
+
+  <accordion close-others="oneAtATime">
+    <accordion-group is-open="form2status.isFirstOpen" is-disabled="form2status.isFirstDisabled">
+        <accordion-heading>
+            Search <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': form2status.isFirstOpen, 'glyphicon-chevron-right': !form2status.isFirstOpen}"></i>
+        </accordion-heading>
+  
+				<form ng-controller="formController" class="form-horizontal">
+				
+	    <div class="form-group">
+		        <p class="pull-right icon-prefix">
 				    <button type="submit" class="btn btn-primary btn-sm" ng-click="onSearch()">Search</button>
 				    <button type="submit" class="btn btn-primary btn-sm" ng-click="onClear()">Clear</button>
 				</p>
-			</div>
 		</div>
 
+				<!-- SHOW DATA FROM INPUTS AS THEY ARE BEING TYPED 
+				<pre>
+				    {{ formData }}
+				</pre>
+				-->
+
+
+		  <accordion close-others="oneAtATime">
+		    <accordion-group is-open="section1status.isFirstOpen" is-disabled="status.isFirstDisabled">
+
+		        <accordion-heading>
+		            <i class="pull-left glyphicon icon-prefix" ng-class="{'glyphicon-chevron-down': section1status.isFirstOpen, 'glyphicon-chevron-right': !section1status.isFirstOpen}"></i>Section 1
+		        </accordion-heading>
+
+		        <div ng-repeat="item in items">								    
+					<div class="form-group">
+					  <label class="small-label col-lg-3 col-md-3 col-sm-3 control-label-sm" for="textinput">Text Input</label>  
+					  <div class="col-lg-6 col-md-6 col-sm-6">
+					  	<input id="textinput" name="textinput" placeholder="placeholder" class="form-control input-sm" type="text">
+					  </div>
+					  <div class="col-lg-3 col-md-3 col-sm-3">
+					    <button class="btn btn-primary btn-sm" ng-click="(item.add && addItem()) || (!item.add && removeItem(item))">{{item.buttonFace}}</button>
+					  </div>
+					</div>
+				</div>
+
+				  <div class="form-group">
+				    <label for="inputEmail3" class="small-label col-lg-3 col-md-3 col-sm-3 control-label-sm">Email</label>
+				    <div class="col-sm-9">
+				      <input type="email" class="form-control input-sm" id="inputEmail3" placeholder="Email">
+				    </div>
+				  </div>
+				
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="small-label col-lg-3 col-md-3 col-sm-3 control-label-sm" for="textinput">Text Input</label>  
+				  <div class="col-lg-9 col-md-9 col-sm-9">
+				  	<input id="textinput" name="textinput" placeholder="placeholder" class="form-control input-sm" type="text">
+				  </div>
+				</div>
+						    
+				<!-- Text input-->
+				<div class="form-group form-group-sm">
+				  <label class="small-label col-lg-3 col-md-3 col-sm-3 control-label-sm" for="textinput">Text Input Longer</label>  
+				  <div class="col-lg-9 col-md-9 col-sm-9">
+				  	<input id="textinput" name="textinput" placeholder="placeholder" class="form-control input-sm" type="text">
+				  </div>
+				</div>
+						    
+		    </accordion-group>
+		    
+		    <accordion-group is-open="section2status.isFirstOpen">
+		        <accordion-heading>
+		            <i class="pull-left glyphicon icon-prefix" ng-class="{'glyphicon-chevron-down': section2status.isFirstOpen, 'glyphicon-chevron-right': !section2status.isFirstOpen}"></i>Section 2
+		        </accordion-heading>
+		        
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="small-label col-lg-3 col-md-3 col-sm-3 control-label-sm" for="textinput">Text Input</label>  
+				  <div class="col-lg-9 col-md-9 col-sm-9">
+				  	<input id="textinput" name="textinput" placeholder="placeholder" class="form-control input-sm" type="text">
+				  </div>
+				</div>
+						    
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="small-label col-lg-3 col-md-3 col-sm-3 control-label-sm" for="textinput">Text Input</label>  
+				  <div class="col-lg-9 col-md-9 col-sm-9">
+				  	<input id="textinput" name="textinput" placeholder="placeholder" class="form-control input-sm" type="text">
+				  </div>
+				</div>
+						    
+			</accordion-group>
+		    
+		    <accordion-group is-open="section3status.isFirstOpen">
+		        <accordion-heading>
+		            <i class="pull-left glyphicon icon-prefix" ng-class="{'glyphicon-chevron-down': section3status.isFirstOpen, 'glyphicon-chevron-right': !section3status.isFirstOpen}"></i>Section 3
+		        </accordion-heading>
+		        Form here ...
+		    </accordion-group>
+		    
+		    <accordion-group is-open="section4status.isFirstOpen">
+		        <accordion-heading>
+		            <i class="pull-left glyphicon icon-prefix" ng-class="{'glyphicon-chevron-down': section4status.isFirstOpen, 'glyphicon-chevron-right': !section4status.isFirstOpen}"></i>Section 4
+		        </accordion-heading>
+		        Form here ...
+		    </accordion-group>
+		    
+		  </accordion>
+
 	    <div class="panel-group">
-	        <div class="panel panel-default">
-	            <div class="panel-heading">
-	                <h4 class="panel-title">
-	                    <a class="accordion-toggle-left" data-toggle="collapse" href="#collapseOne">Accordion 1</a>
-	                </h4>
-	            </div>
-	            <div id="collapseOne" class="panel-collapse collapse in">
-	                <div class="panel-body">
-					        <div class="form-group required">
-					            <label for="inputEmail" class="control-label col-xs-2">Field 1</label>
-					            <div class="col-xs-10">
-					                <input type="email" class="form-control" id="inputEmail" placeholder="Field 1" data-rule-required="true">
-					            </div>
-					        </div>
-					        <div class="form-group">
-					            <label for="inputPassword" class="control-label col-xs-2">Field 2</label>
-					            <div class="col-xs-10">
-					                <input type="password" class="form-control" id="inputPassword" placeholder="Field 2">
-					            </div>
-					        </div>
-	                </div>
-	            </div>
-	        </div>
-	        <div class="panel panel-default">
-	            <div class="panel-heading">
-	                <h4 class="panel-title">
-	                    <a class="accordion-toggle-left collapsed" data-toggle="collapse" href="#collapseTwo">Accordion 2</a>
-	                </h4>
-	            </div>
-	            <div id="collapseTwo" class="panel-collapse collapse">
-	                <div class="panel-body">
-	                    <p>Accordion 2 content</p>
-	                </div>
-	            </div>
-	        </div>
-	        <div class="panel panel-default">
-	            <div class="panel-heading">
-	                <h4 class="panel-title">
-	                    <a class="accordion-toggle-left collapsed" data-toggle="collapse" href="#collapseThree">Accordion 3</a>
-	                </h4>
-	            </div>
-	            <div id="collapseThree" class="panel-collapse collapse">
-	                <div class="panel-body">
-	                    <p>Accordion 3 content</p>
-	                </div>
-	            </div>
-	        </div>
-	        <div class="panel panel-default">
-	            <div class="panel-heading">
-	                <h4 class="panel-title">
-	                    <a class="accordion-toggle-left collapsed" data-toggle="collapse" href="#collapseFour">Accordion 4</a>
-	                </h4>
-	            </div>
-	            <div id="collapseFour" class="panel-collapse collapse">
-	                <div class="panel-body">
-	                    <p>Accordion 4 content</p>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    
-	    <div class="panel-group">
-	        <div class="panel panel-default">
+	        <div class="panel">
 		        <p class="pull-right">
 				    <button type="submit" class="btn btn-primary btn-sm" ng-click="onSearch()">Search</button>
 				    <button type="submit" class="btn btn-primary btn-sm" ng-click="onClear()">Clear</button>
 				</p>
 			</div>
 		</div>
-    </form>		                    
+				
+				</form>
+  
+    	</accordion-group>
+    </accordion>
+  
